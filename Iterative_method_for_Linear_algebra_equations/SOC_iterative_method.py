@@ -94,3 +94,6 @@ def test():
     print("SOC iterative method test end...")
     print("*****************************************************************\n")
     return x, epoch
+
+if __name__ == "__main__":     
+    test()
