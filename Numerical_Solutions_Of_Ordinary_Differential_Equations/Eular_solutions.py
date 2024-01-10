@@ -68,6 +68,27 @@ def Adams_Bashforth_Solution(a,b,y0,f,h):
         x = x + h
     return y
 
+################################################################
+# 四阶龙格-库塔法
+# a,b: 区间
+# y0: 初值
+# f: 函数
+# h: 步长
+# 返回值: x,y
+################################################################
+
+def Runge_Kutta_Solution(a,b,y0,f,h):
+    x = a
+    y = y0
+    n = (b-a)/h
+    for i in range(int(n)):
+        k1 = h*f(x,y)
+        k2 = h*f(x+h/2,y+k1/2)
+        k3 = h*f(x+h/2,y+k2/2)
+        k4 = h*f(x+h,y+k3)
+        y = y + (k1+2*k2+2*k3+k4)/6
+        x = x + h
+    return y
 
 def f(x,y):
     return y-2*x/y
@@ -80,9 +101,10 @@ def h(x):
     return math.sqrt(2*x+1)
 
 def test():
-    x, y = Eular_Solution(0,1,1,f,0.01)
-    a = Improved_Eular_Solution(0,1,1,g,0.01)
-    a1 = Adams_Bashforth_Solution(0,1,1,f,0.01)
+    x, y = Eular_Solution(0,1,1,f,0.1)
+    a = Improved_Eular_Solution(0,1,1,g,0.1)
+    a1 = Adams_Bashforth_Solution(0,1,1,f,0.1)
+    a3 = Runge_Kutta_Solution(0,1,1,f,0.1)
     a2 = h(1)
     print("*****************************************************************")
     print("Eular_Solution test start...")
@@ -91,6 +113,7 @@ def test():
     print(f"Eular_Solution: {y} error: {abs(y-a2)}")
     print(f"Improved_Eular_Solution: {a} error: {abs(a-a2)}")
     print(f"Adams_Bashforth_Solution: {a1} error: {abs(a1-a2)}")
+    print(f"Runge_Kutta_Solution: {a3} error: {abs(a3-a2)}")
     print(f"real anwser:h(x)=sqrt(2*x+1) h(1)={a2}")
     print("\n*****************************************************************")
     print("Eular_Solution test end...")
