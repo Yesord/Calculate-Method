@@ -57,9 +57,9 @@ def cubic_spline_interpolation(data_points_x, data_points_y, test_points_x):
 
 if __name__ == '__main__':
     
-    data_x = np.array([0, 1, 2, 3, 4, 5, 6, 7])
-    data_y = np.array([110, 31, 12, 53, 34, 51, 11, 131])
-    test_points_x = np.linspace(0, 7, 100) # 生成0到5之间的100个点
+    data_x = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8])
+    data_y = np.array([110, 31, 12, 53, 34, 51, 11, 131,14])
+    test_points_x = np.linspace(0, 8, 100) # 生成0到5之间的100个点
     test_points_y = cubic_spline_interpolation(data_x, data_y, test_points_x)
 
     plt.figure(figsize=(8, 6))

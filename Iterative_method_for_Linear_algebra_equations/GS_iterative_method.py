@@ -77,8 +77,8 @@ def test():
     print("GS iterative method test start...")
     print("*****************************************************************\n")
     x0 = [0, 0, 0] # 初始值
-    A = [[15, -3, 4], [1, 5, -3], [1, 1, -5]] # 系数矩阵
-    B = [4, 2, -11] # 常数项
+    A = [[12, -4, 12], [-4, 2, 4], [2, -4, 13]] # 系数矩阵
+    B = [8, 0, 0] # 常数项
     tol = 0.5e-3 # 精度要求
     max_iter = 100 # 最大迭代次数
     x, epoch = GS_iterative_method(A, B, x0, tol, max_iter,info=True, plot=True) # GS迭代法
@@ -89,4 +89,6 @@ def test():
 
 
 if __name__ == "__main__":     
-    test()
+    x,y = test()
+    print(x)
+    print(4*(x[1]+x[2]))

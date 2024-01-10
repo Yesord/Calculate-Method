@@ -12,18 +12,19 @@ def newton_iterate(x, f, acc, max_iter):
     # 返回值: 迭代结果
     # 请在此处添加代码:
     for iter in range(max_iter):
-        x = x - f(x)/df(x,f)
-        if abs(x) < acc:
-            break
-    return x
+        x1 = x - f(x)/df(x,f)
+        print(x1)
+        if abs(x1-x) < acc:
+            return x1, iter
+        x = x1
 
 
 
 def f(x):
     
-    return math.pow(x,3) - 2*math.pow(x,2) + 3*x - 4
+    return x**3+4*x**2-10
 
 
 if __name__ == "__main__":
-    ret = newton_iterate(2, f, 1e-6, 100)
-    print(ret)
+    ret = newton_iterate(1, f, 1e-5, 100)
+    print(ret[0], ret[1])

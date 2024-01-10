@@ -33,7 +33,7 @@ def SOR_iterative_method(A, b, x0, w, tol, max_iter, info=False, plot=False):
         x3_history = []
         epoch_value = []
 
-    for epoch in range(max_iter): # SOC迭代
+    for epoch in range(max_iter): # SOR迭代
         for i in range(n):
             x1[i] = b[i] 
             for j in range(n):
@@ -89,7 +89,7 @@ def test():
     w = 1.24 # 松弛因子
     tol = 1e-3 # 精度要求
     max_iter = 100 # 最大迭代次数
-    x, epoch = SOR_iterative_method(A, B, x0, w, tol, max_iter,info=True, plot=True) # jacobi迭代法
+    x, epoch = SOR_iterative_method(A, B, x0, w, tol, max_iter,info=True, plot=True) # SOR迭代法
     print("*****************************************************************")
     print("SOR iterative method test end...")
     print("*****************************************************************\n")
